@@ -9,5 +9,6 @@ before_install:
 install:
     - sudo apt-get install -y frc-toolchain
     - cd ~/allwpilib
+    - ./gradlew assemble
     - ./gradlew :wpilibc:build
     - ls -alR build
