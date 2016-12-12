@@ -8,7 +8,7 @@ before_install:
     - git clone https://usfirst.collab.net/gerrit/p/allwpilib.git ~/allwpilib
 
 install:
-    - sudo apt-get install -y frc-toolchain
+    - sudo apt-get install -y frc-toolchain protobuf-compiler libprotobuf-dev python3 clang-format-3.8
     - cd ~/allwpilib
     - ./gradlew build
     - ./gradlew :wpilibc:build
