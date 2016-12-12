@@ -1,6 +1,6 @@
 dist: trusty
 sudo: required
-language: java
+language: cpp
 
 before_install:
     - sudo apt-add-repository -y ppa:wpilib/toolchain
@@ -9,7 +9,7 @@ before_install:
 
 install:
     - sudo apt-get install -y frc-toolchain protobuf-compiler libprotobuf-dev python3 clang-format-3.8
-    - cd ~/allwpilib
-    - ./gradlew build -PmakeSim
-    - ./gradlew :wpilibc:build
+#    - cd ~/allwpilib
+#    - ./gradlew build -PmakeSim
+    - ./gradlew :wpilibc:cmake
     - ls -alR build
