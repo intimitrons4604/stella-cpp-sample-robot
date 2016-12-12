@@ -1,0 +1,8 @@
+before_install:
+    - sudo apt-add-repository ppa:wpilib/toolchain
+    - sudo apt-get update
+    - git clone https://usfirst.collab.net/gerrit/p/allwpilib.git ~/allwpilib
+
+install:
+    - sudo apt-get install frc-toolchain
+    - ~/allwpilib/gradlew/:wpilibc:build
