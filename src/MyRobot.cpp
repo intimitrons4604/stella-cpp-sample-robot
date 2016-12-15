@@ -1,4 +1,5 @@
 #include <cstdio>
+#include <memory>
 
 #include "WPILib.h"
 /*
@@ -26,34 +27,34 @@ class MyRobot : public SampleRobot
 {
     private:
         int joystickChannel = 0;
-        Talon * MotorLeft1;
-        Talon * MotorLeft2;
-        Talon * MotorRight1;
-        Talon * MotorRight2;
-        Victor * ArmHinge;
-        Victor * LiftWinch;
-        Victor * PositioningWinch;
-        Victor * Whapper;
-        DigitalInput * Limit;
-        Joystick * Drive;
-        Joystick * Controls;
+        std::unique_ptr<Talon> MotorLeft1;
+        std::unique_ptr<Talon> MotorLeft2;
+        std::unique_ptr<Talon> MotorRight1;
+        std::unique_ptr<Talon> MotorRight2;
+        std::unique_ptr<Victor> ArmHinge;
+        std::unique_ptr<Victor> LiftWinch;
+        std::unique_ptr<Victor> PositioningWinch;
+        std::unique_ptr<Victor> Whapper;
+        std::unique_ptr<DigitalInput> Limit;
+        std::unique_ptr<Joystick> Drive;
+        std::unique_ptr<Joystick> Controls;
 
     public:
         void RobotInit()
         {
             /*Robot initialization function*/
-            MotorLeft1 = new Talon(1);
-            MotorLeft2 = new Talon(2);
-            MotorRight1 = new Talon(3);
-            MotorRight2 = new Talon(4);
-            ArmHinge = new Victor(8);
-            LiftWinch = new Victor(5);
-            PositioningWinch = new Victor(6);
-            Whapper = new Victor(7);
-            Limit = new DigitalInput(0); //Added as an example, DigitalInput class not tested
+            MotorLeft1.reset(new Talon(1));
+            MotorLeft2.reset(new Talon(2));
+            MotorRight1.reset(new Talon(3));
+            MotorRight2.reset(new Talon(4));
+            ArmHinge.reset(new Victor(8));
+            LiftWinch.reset(new Victor(5));
+            PositioningWinch.reset(new Victor(6));
+            Whapper.reset(new Victor(7));
+            Limit.reset(new DigitalInput(0)); //Added as an example, DigitalInput class not tested
             //stick = new Joystick(driveChannel);
-            Drive = new Joystick(0, 6, 10);//Driving controller
-            Controls = new Joystick(1, 6, 10);//Winch and arm controller
+            Drive.reset(new Joystick(0, 6, 10));//Driving controller
+            Controls.reset(new Joystick(1, 6, 10));//Winch and arm controller
         }
 
         void armTest()
@@ -206,12 +207,12 @@ class MyRobot : public SampleRobot
         {
             std::printf("entering test mode");
 
-            //USBCamera * camera = new USBCamera();
-            //CameraServer * cServer = new CameraServer();
+            //std::shared_ptr<USBCamera> camera(new USBCamera(USBCamera::kDefaultCameraName, false));
+            //CameraServer * cServer = CameraServer::GetInstance();
             //camera->StartCapture();
             //try
             //{
-            //    cServer->StartAutomaticCapture(std::static_pointer_cast<USBCamera>(camera));
+            //    cServer->StartAutomaticCapture(camera);
             //}
             //catch (...)
             //{
