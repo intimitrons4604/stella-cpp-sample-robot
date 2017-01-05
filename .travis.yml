@@ -12,4 +12,4 @@ install:
 
 script:
     - cd ~/tools-ci-cpp-build-script
-    - ./gradlew -PsrcDir=$HOME/stella-cpp-sample-robot clean build
+    - ./gradlew -PsrcDir=$HOME/intimitrons4604/stella-cpp-sample-robot clean build
