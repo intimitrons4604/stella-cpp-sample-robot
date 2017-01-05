@@ -11,4 +11,5 @@ install:
     - sudo apt-get install -y frc-toolchain
 
 script:
-    - ~/tools-ci-cpp-build-script/gradlew -PsrcDir=$HOME/stella-cpp-sample-robot clean build
+	- cd ~/tools-ci-cpp-build-script
+	- ./gradlew -PsrcDir=$HOME/stella-cpp-sample-robot clean build
