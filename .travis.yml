@@ -5,10 +5,10 @@ language: cpp
 before_install:
     - sudo apt-add-repository -y ppa:wpilib/toolchain
     - sudo apt-get update
-    - git clone https://github.com/intimitrons4604/tools-ci-cpp-build-script.git ~/tools-ci-cpp-build-script
 
 install:
     - sudo apt-get install -y frc-toolchain
+    - git clone https://github.com/intimitrons4604/tools-ci-cpp-build-script.git ~/tools-ci-cpp-build-script
 
 script:
     - cd ~/tools-ci-cpp-build-script
