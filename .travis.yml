@@ -1,0 +1,24 @@
+dist: trusty
+sudo: required
+language: cpp
+
+before_install:
+    - sudo apt-add-repository -y ppa:wpilib/toolchain
+    - sudo apt-get update
+
+install:
+    - sudo apt-get install -y frc-toolchain
+    - git clone https://github.com/intimitrons4604/tools-ci-cpp-build-script.git ~/tools-ci-cpp-build-script
+
+script:
+    - cd ~/tools-ci-cpp-build-script
+    - ./gradlew --no-daemon -PsrcDir=$TRAVIS_BUILD_DIR/src clean build
+
+before_cache:
+    - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+    - rm -rf $HOME/.gradle/caches/*/plugin-resolution/
+
+cache:
+    directories:
+        - $HOME/.gradle/caches
+        - $HOME/.gradle/wrapper

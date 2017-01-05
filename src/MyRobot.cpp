@@ -113,7 +113,7 @@ class MyRobot : public SampleRobot
             float straight=Drive->GetRawAxis(1);
             float turn=Drive->GetRawAxis(4);
             bool turbo=Drive->GetRawButton(5); //Left shoulder button acts as turbo
-            bool limit=Limit->Get();
+
             //Deadband logic
 
             if (std::abs(straight)<=0.2)
@@ -152,7 +152,7 @@ class MyRobot : public SampleRobot
             bool turbo=Drive->GetRawButton(5); //Left shoulder button acts as turbo
             //Inputs from Control controller
             //Inputs on the robot itself
-            bool limit=Limit->Get();
+
             //Deadband logic
             if (std::abs(right)<=0.2)
                 right=0;
