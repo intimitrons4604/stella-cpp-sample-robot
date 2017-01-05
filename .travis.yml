@@ -12,7 +12,7 @@ install:
 
 script:
     - cd ~/tools-ci-cpp-build-script
-    - ./gradlew -PsrcDir=$TRAVIS_BUILD_DIR/src clean build
+    - ./gradlew --no-daemon -PsrcDir=$TRAVIS_BUILD_DIR/src clean build
 
 before_cache:
     - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
