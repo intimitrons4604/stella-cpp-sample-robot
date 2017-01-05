@@ -9,7 +9,8 @@ before_install:
 
 install:
     - sudo apt-get install -y frc-toolchain
+    - ls -alR $HOME
 
 script:
     - cd ~/tools-ci-cpp-build-script
-    - ./gradlew -PsrcDir=../intimitrons4604/stella-cpp-sample-robot clean build
+    - ./gradlew --info -PsrcDir=../intimitrons4604/stella-cpp-sample-robot clean build
