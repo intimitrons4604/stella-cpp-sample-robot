@@ -1,18 +1,14 @@
 dist: trusty
 sudo: required
-language: java
+language: cpp
 
 before_install:
     - sudo apt-add-repository -y ppa:wpilib/toolchain
     - sudo apt-get update
-    - git clone https://usfirst.collab.net/gerrit/p/allwpilib.git ~/allwpilib
+    - git clone https://github.com/intimitrons4604/tools-ci-cpp-build-script.git ~/tools-ci-cpp-build-script
 
 install:
-#    - sudo sh -c 'echo \"deb http://packages.osrfoundation.org/gazebo/ubuntu-stable `lsb_release -cs` main\" > /etc/apt/sources.list.d/gazebo-stable.list'
-#    - wget http://packages.osrfoundation.org/gazebo.key -O - | sudo apt-key add -
-    - sudo apt-get install -y frc-toolchain protobuf-compiler libprotobuf-dev
-    - cd ~/allwpilib
-#    - ./gradlew tasks --all
-    - ./gradlew build --debug
-#    - ./gradlew :wpilibc:cmake
-    - ls -alR build
+    - sudo apt-get install -y frc-toolchain
+
+script:
+    - ~/tools-ci-cpp-build-script/gradlew -PsrcDir=$HOME/stella-cpp-sample-robot clean build
