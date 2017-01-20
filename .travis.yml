@@ -8,7 +8,7 @@ before_install:
 
 install:
     - sudo apt-get install -y frc-toolchain
-    - git clone https://github.com/intimitrons4604/tools-ci-cpp-build-script.git ~/tools-ci-cpp-build-script
+    - git clone --branch 2016.1.0 --depth 1 https://github.com/intimitrons4604/tools-ci-cpp-build-script.git ~/tools-ci-cpp-build-script
 
 script:
     - cd ~/tools-ci-cpp-build-script
